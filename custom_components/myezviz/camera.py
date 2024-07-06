@@ -100,7 +100,7 @@ class EzvizCamera(Camera):
             return False
 
     def get_device_capture(self):
-        r = requests.post('https://open.ys7.com/api/lapp/device/capture', data={'accessToken':self.accessToken,'deviceSerial':self.deviceSerial,'channelNo':1,'quality':1})
+        r = requests.post('https://open.ys7.com/api/lapp/device/capture', data={'accessToken':self.accessToken,'deviceSerial':self.deviceSerial,'channelNo':3,'quality':1})
         result = r.json()
         if (result['code']=='200'):
             return result['data']['picUrl']
@@ -128,8 +128,7 @@ class EzvizCamera(Camera):
         return (self._next_snapshot_at is None or
                 now > self._next_snapshot_at)
 
-    def camera_image(
-              self, width: int , height: int
+    def camera_image(self, width: int , height: int
     ):
         """Return a faked still image response."""
         #_LOGGER.error("camera_image")
